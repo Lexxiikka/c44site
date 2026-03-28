@@ -50,8 +50,7 @@
             height: 75px;
             width: auto;
             object-fit: contain;
-            border-radius: 8px;
-            border: 2px solid #fff;
+            border-radius: 15px;
         }
 
         .header-left h1 {
@@ -319,11 +318,13 @@
         }
 
         .rules-sidebar {
-            width: 200px;
+            width: 250px;
             flex-shrink: 0;
             position: sticky;
             top: 120px;
             height: fit-content;
+            max-height: calc(100vh - 140px);
+            overflow-y: auto;
             background-color: #1a1a1a;
             padding: 20px;
             border-radius: 8px;
@@ -359,6 +360,16 @@
         .rules-sidebar a:hover {
             background-color: #800000;
             color: #fff;
+        }
+
+        .rules-sidebar .section-link {
+            color: #4CAF50;
+            font-weight: bold;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            padding-left: 10px;
+            font-size: 13px;
+            text-transform: uppercase;
         }
 
         .rules-container {
@@ -441,6 +452,11 @@
             font-size: 18px;
             margin-bottom: 15px;
             font-weight: bold;
+        }
+
+        .rule-description {
+            color: #ccc;
+            margin-bottom: 10px;
         }
 
         .rule-description ul {
@@ -625,6 +641,17 @@
             font-style: normal;
         }
 
+        .note-box {
+            background-color: rgba(220, 53, 69, 0.15);
+            border: 1px solid #dc3545;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+            color: #ff6b6b;
+            font-weight: 500;
+            text-align: center;
+        }
+
         @media (max-width: 900px) {
             header {
                 flex-wrap: wrap;
@@ -674,6 +701,7 @@
                 width: 100%;
                 position: static;
                 margin-bottom: 30px;
+                max-height: none;
             }
         }
 
@@ -761,6 +789,7 @@
             <p>ㅤ</p>
             <p>ㅤ</p>
             <p>ㅤ</p>
+            <p>ㅤ</p>
         </section>
 
         <section id="rules" class="tab-content">
@@ -769,17 +798,17 @@
             <div class="rules-wrapper">
                 <nav class="rules-sidebar">
                     <h4>Навигация</h4>
-                    <ul>
-                        <li><a href="#terms">📚 Список терминов</a></li>
-                        <li><a href="#section1">ну я хз раздел 1</a></li>
-                        <li><a href="#section2">Два раздел</a></li>
-                    </ul>
+                    <a href="#terms" class="section-link">📚 Термины</a>
+                    <a href="#section1" class="section-link">📋 Раздел 1</a>
+                    <a href="#section2" class="section-link">🎮 Раздел 2</a>
+                    <a href="#section3" class="section-link">💬 Раздел 3</a>
+                    <a href="#section4" class="section-link">⚖️ Раздел 4</a>
                 </nav>
 
                 <div class="rules-container">
                     <div class="rules-intro">
                         <img src="assets/rules_top.webp" alt="" class="rules-intro-img">
-                        <p style="color: red;">Каждый администратор, имеет право выбирать тип и срок наказания по своему усмотрению.</p>
+                        <p class="note-box">Каждый администратор имеет право выбирать тип и срок наказания по своему усмотрению.</p>
                     </div>
 
                     <div class="terms-accordion" id="terms">
@@ -804,7 +833,7 @@
                                 <li>
                                     <div class="term-title">LOOC - Local Out Of Character</div>
                                     <div class="term-desc">
-                                        Тоже самое, что и ООС, но в ограниченом радиусе: сообщения LOOC видны только тем, кто находится поблизости, позволяя обмениваться неигровой информацией не засоряя глобальный ООС.
+                                        Тоже самое, что и ООС, но в ограниченном радиусе: сообщения LOOC видны только тем, кто находится поблизости, позволяя обмениваться неигровой информацией не засоряя глобальный ООС.
                                     </div>
                                 </li>
                                 <li>
@@ -851,50 +880,182 @@
                             <h3>Раздел 1: Основные правила</h3>
 
                             <div class="rule-item" id="rule1-1">
-                                <h4 class="rule-title">1.1. Запрещено</h4>
+                                <h4 class="rule-title">1.1 NRP (Non Role Play)</h4>
                                 <div class="rule-description">
-                                    <ul>
-                                        <li>Пункт 1</li>
-                                        <li>Большой текст для правила !!! Большой текст для правила !!! Большой текстдля
-                                            правила !!! Большой текст для правила !!! Большой текст для правила
-                                            !!!Большой текст для правила !!! Большой текст для правила !!! Большой
-                                            текстдля правила !!! Большой текст для правила !!! Большой текст для правила
-                                            !!!Большой текст для правила !!! Большой текст для правила !!! Большой
-                                            текстдля правила !!! </li>
-                                        <li>Кто ссал тот лох</li>
-                                    </ul>
-                                </div>
-                                <div class="rule-exceptions">
-                                    <span class="exceptions-label">Исключения:</span>
-                                    <ul>
-                                        <li>Разрешено депутатам</li>
-                                        <li>Создатель сайта крутой</li>
-                                    </ul>
+                                    <p>Нарушение РП процесса, либо неправильный его отыгрыш.</p>
+                                    <p><em>При использовании нонРП терминов или совершении нонРП поступков, которые категорически запрещены и не вписываются в атмосферу игры, вас могут убить или изолировать, посчитав психически больным.</em></p>
                                 </div>
                                 <div class="rule-punishment">
                                     <span class="punishment-label">Наказание:</span>
-                                    <span class="punishment-text">Я думаю бан нахуй</span>
+                                    <span class="punishment-text">Warn | Ban 4h | Ban 1d | Ban 1w | Perma</span>
                                 </div>
                             </div>
 
                             <div class="rule-item" id="rule1-2">
-                                <h4 class="rule-title">1.2. Запрещено жить</h4>
+                                <h4 class="rule-title">1.2 NRPN (Non Role Play Nickname)</h4>
                                 <div class="rule-description">
+                                    <p>Нарушение, связанное с вашим никнеймом на сервере:</p>
                                     <ul>
-                                        <li>Повстанцы - дикари канальные</li>
-                                        <li>Альянс сильный пиздец</li>
-                                        <li>Дайте звание верховного главы Альянса мне))</li>
-                                    </ul>
-                                </div>
-                                <div class="rule-exceptions">
-                                    <span class="exceptions-label">Исключения:</span>
-                                    <ul>
-                                        <li>жить можно только мне</li>
+                                        <li>Не читабельный никнейм.</li>
+                                        <li>Не состоящий из имени и фамилии.</li>
+                                        <li>Запрещено ставить мат/рекламу/оскорбления и производные от матов или оскорблений.</li>
+                                        <li>Запрещено ставить имена и фамилии, как-либо связанные с ИТ и ПК.</li>
+                                        <li>Запрещается использовать имена и фамилии популярных/исторических личностей, персонажей.</li>
+                                        <li>Запрещено ставить имена и фамилии, как-либо связанные с ключевыми персонажами HL2 в любом виде; дополнительно нельзя коверкать их имена и фамилии.</li>
+                                        <li>Запрещено ставить никнеймы из нескольких производных или двух и более имён нарицательных.</li>
+                                        <li>Запрещено использовать занятые никнеймы администрации проекта и игроков.</li>
                                     </ul>
                                 </div>
                                 <div class="rule-punishment">
                                     <span class="punishment-label">Наказание:</span>
-                                    <span class="punishment-text">Расстрел, потом бан</span>
+                                    <span class="punishment-text">Warn | Ban 1h | Ban 4h</span>
+                                </div>
+                            </div>
+
+                            <div class="rule-item" id="rule1-3">
+                                <h4 class="rule-title">1.3 НПП (Нарушение правила профессий)</h4>
+                                <div class="rule-description">
+                                    <p>Нарушение правил, связанных с отыгрышем вашей игровой профессии.</p>
+                                </div>
+                                <div class="rule-punishment">
+                                    <span class="punishment-label">Наказание:</span>
+                                    <span class="punishment-text">Warn | Ban 4h | Ban 1d | Ban 1w | Perma</span>
+                                </div>
+                            </div>
+
+                            <div class="rule-item" id="rule1-4">
+                                <h4 class="rule-title">1.4 FRP (Fear Role Play)</h4>
+                                <div class="rule-description">
+                                    <p>Нарушение, связанное с отыгрышем страха вашего персонажа:</p>
+                                    <ul>
+                                        <li>Намеренное самоубийство, если вашей жизни ничего не грозит или в ситуации, в которой есть выход из неё.</li>
+                                        <li>Совершение действий, связанных с неподчинением человеку, у которого имеется оружие.</li>
+                                        <li>Совершение действий, связанных с неподчинением группе вооружённых лиц в ситуации, где вы никак не сможете справиться.</li>
+                                        <li>Доставать оружие, если на вас уже смотрит противник с оружием. <em>Уточнение: Если у вас в руках холодное оружие, а у противника огнестрельное — вы обязаны подчиняться.</em></li>
+                                    </ul>
+                                </div>
+                                <div class="rule-punishment">
+                                    <span class="punishment-label">Наказание:</span>
+                                    <span class="punishment-text">Ban 4h | Ban 1d | Ban 1w | Perma</span>
+                                </div>
+                            </div>
+
+                            <div class="rule-item" id="rule1-5">
+                                <h4 class="rule-title">1.5 NLR (New Life Rule)</h4>
+                                <div class="rule-description">
+                                    <p>Нарушение, связанное с отыгрышем вашего персонажа после смерти. Ваш персонаж обязан забывать всё после каждой смерти, если он не входит в исключения.</p>
+                                </div>
+                                <div class="rule-exceptions">
+                                    <span class="exceptions-label">Исключения:</span>
+                                    <ul>
+                                        <li>Солдаты ОТА помнят свою точку смерти.</li>
+                                    </ul>
+                                </div>
+                                <div class="rule-punishment">
+                                    <span class="punishment-label">Наказание:</span>
+                                    <span class="punishment-text">Warn | Ban 4h | Ban 1d | Ban 1w</span>
+                                </div>
+                            </div>
+
+                            <div class="rule-item" id="rule1-6">
+                                <h4 class="rule-title">1.6 PTI (Provocation to Infraction)</h4>
+                                <div class="rule-description">
+                                    <p>Провокация человека на нарушение правил.</p>
+                                </div>
+                                <div class="rule-punishment">
+                                    <span class="punishment-label">Наказание:</span>
+                                    <span class="punishment-text">Ban 4h | Ban 1d | Ban 1w | Perma</span>
+                                </div>
+                            </div>
+
+                            <div class="rule-item" id="rule1-7">
+                                <h4 class="rule-title">1.7 BP (Buy Prof)</h4>
+                                <div class="rule-description">
+                                    <p>Покупка/продажа профессий за внутриигровую валюту запрещена.</p>
+                                </div>
+                                <div class="rule-punishment">
+                                    <span class="punishment-label">Наказание:</span>
+                                    <span class="punishment-text">Ban 4h | Ban 1d | Ban 1w</span>
+                                </div>
+                            </div>
+
+                            <div class="rule-item" id="rule1-8">
+                                <h4 class="rule-title">1.8 PC (Political Conflict)</h4>
+                                <div class="rule-description">
+                                    <p>Запрещено как-либо упоминать/поднимать политические темы реальной жизни в РП. Запрещено как-либо упоминать/поднимать конфликт между Украиной и Россией в OOC/LOOC/RP.</p>
+                                    <ul>
+                                        <li>Материалы военных действий и новостные сводки военных действий.</li>
+                                    </ul>
+                                </div>
+                                <div class="rule-punishment">
+                                    <span class="punishment-label">Наказание:</span>
+                                    <span class="punishment-text">Ban 1d | Ban 1w | Perma</span>
+                                </div>
+                            </div>
+
+                            <div class="rule-item" id="rule1-9">
+                                <h4 class="rule-title">1.9 BA (Bug Abuse)</h4>
+                                <div class="rule-description">
+                                    <p>Использование багов и уязвимостей сервера с целью извлечения собственной выгоды или порчи геймплея другим игрокам.</p>
+                                </div>
+                                <div class="rule-exceptions">
+                                    <span class="exceptions-label">Исключение:</span>
+                                    <ul>
+                                        <li>Если сразу сообщаете о баге администрации.</li>
+                                    </ul>
+                                </div>
+                                <div class="rule-punishment">
+                                    <span class="punishment-label">Наказание:</span>
+                                    <span class="punishment-text">Ban 1w | Perma</span>
+                                </div>
+                            </div>
+
+                            <div class="rule-item" id="rule1-10">
+                                <h4 class="rule-title">1.10 MA (Multi Acc)</h4>
+                                <div class="rule-description">
+                                    <p>Запрещено обходить блокировки, играть с нескольких аккаунтов, передавать аккаунт другим лицам.</p>
+                                </div>
+                                <div class="rule-punishment">
+                                    <span class="punishment-label">Наказание:</span>
+                                    <span class="punishment-text">Perma</span>
+                                </div>
+                            </div>
+
+                            <div class="rule-item" id="rule1-11">
+                                <h4 class="rule-title">1.11 AD (Реклама)</h4>
+                                <div class="rule-description">
+                                    <p>Запрещена прямая реклама сторонних ресурсов, проектов и т.д. Обычное упоминание не считается рекламой.</p>
+                                    <ul>
+                                        <li>Реклама чужого проекта, не связанная с проектом Project: Suppression Instinct | C44.</li>
+                                        <li>Реклама чужих дискордов, не относящихся к проекту Project: Suppression Instinct | C44.</li>
+                                    </ul>
+                                </div>
+                                <div class="rule-punishment">
+                                    <span class="punishment-label">Наказание:</span>
+                                    <span class="punishment-text">Perma</span>
+                                </div>
+                            </div>
+
+                            <div class="rule-item" id="rule1-12">
+                                <h4 class="rule-title">1.12 MG (Meta Gaming)</h4>
+                                <div class="rule-description">
+                                    <p>Запрещено распространение актуальной RP-информации через OOC-чаты, как и использование RP-информации, полученной через OOC-источники.</p>
+                                    <p><em>Примеры: информирование игроков о событиях, происходящих вне поля зрения их персонажей. (Человек в соседней комнате отыгрывает, что достаёт из кармана пачку сигарет, пока вы не увидите в его руках пачку сигарет по РП — вы не можете никак воспользоваться информацией. Нельзя использовать чат как РП-информацию в данных случаях.)</em></p>
+                                </div>
+                                <div class="rule-punishment">
+                                    <span class="punishment-label">Наказание:</span>
+                                    <span class="punishment-text">Warn | Ban 4h | Ban 1d | Ban 1w | Perma</span>
+                                </div>
+                            </div>
+
+                            <div class="rule-item" id="rule1-13">
+                                <h4 class="rule-title">1.13 RMT (Real Money Trading)</h4>
+                                <div class="rule-description">
+                                    <p>Запрещена продажа или покупка внутриигровых вещей за реальные деньги.</p>
+                                </div>
+                                <div class="rule-punishment">
+                                    <span class="punishment-label">Наказание:</span>
+                                    <span class="punishment-text">Perma</span>
                                 </div>
                             </div>
                         </div>
@@ -906,25 +1067,180 @@
                         </div>
 
                         <div class="section-content">
-                            <h3>Раздел 2: Не основные правила</h3>
+                            <h3>Раздел 2: Правила игрового процесса</h3>
 
                             <div class="rule-item" id="rule2-1">
-                                <h4 class="rule-title">2.1. Ну читы бан кароче</h4>
+                                <h4 class="rule-title">2.1 SA (ServAbus)</h4>
                                 <div class="rule-description">
-                                    <ul>
-                                        <li>Бан за все читы</li>
-                                    </ul>
+                                    <p>Помеха игровому процессу игрокам и разрушение атмосферы сервера своими действиями.</p>
                                 </div>
-                                <div class="rule-exceptions">
-                                    <span class="exceptions-label">Исключения:</span>
+                                <div class="rule-punishment">
+                                    <span class="punishment-label">Наказание:</span>
+                                    <span class="punishment-text">Ban 4h | Ban 1d | Ban 1w | Perma</span>
+                                </div>
+                            </div>
+
+                            <div class="rule-item" id="rule2-2">
+                                <h4 class="rule-title">2.2 LRP (Leave RolePlay)</h4>
+                                <div class="rule-description">
+                                    <p>Уход с активным взаимодействием (например: с ролевой ситуации или админ-базы) путём выхода с сервера, намеренной смерти персонажа, смены профессии или в режиме ухода AFK.</p>
                                     <ul>
-                                        <li>Баритон</li>
-                                        <li>ИксРей (не путать с валхаком)</li>
-                                        <li>ПлазмаВойс</li>
+                                        <li>Во время РП-процесса вы покинули свою профессию, игнорируя РП-процесс.</li>
+                                        <li>Во время РП-процесса либо разбора жалобы вы вышли с сервера.</li>
                                     </ul>
                                 </div>
                                 <div class="rule-punishment">
-                                    <span class="punishment-label">Наказание: ban 99h</span>
+                                    <span class="punishment-label">Наказание:</span>
+                                    <span class="punishment-text">Ban 1d | Ban 1w | Perma</span>
+                                </div>
+                            </div>
+
+                            <div class="rule-item" id="rule2-3">
+                                <h4 class="rule-title">2.3 FK (Free Kill)</h4>
+                                <div class="rule-description">
+                                    <p>Убийство игрока без адекватной РП-причины.</p>
+                                </div>
+                                <div class="rule-punishment">
+                                    <span class="punishment-label">Наказание:</span>
+                                    <span class="punishment-text">Ban 4h | Ban 1d | Ban 1w | Perma</span>
+                                </div>
+                            </div>
+
+                            <div class="rule-item" id="rule2-4">
+                                <h4 class="rule-title">2.4 RDM (Random DeathMatch)</h4>
+                                <div class="rule-description">
+                                    <p>Массовое убийство игроков в больших количествах без адекватной на то причины.</p>
+                                    <ul>
+                                        <li>Убийство 8-х и более Юнитов Гражданской Обороны в одиночку.</li>
+                                        <li>Убийство 10-ти и более Гражданских без адекватной и игровой причины.</li>
+                                    </ul>
+                                </div>
+                                <div class="rule-punishment">
+                                    <span class="punishment-label">Наказание:</span>
+                                    <span class="punishment-text">Ban 1w | Perma</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rules-section" id="section3">
+                        <div class="section-image">
+                            <img src="assets/section3.webp" alt="" class="section-img">
+                        </div>
+
+                        <div class="section-content">
+                            <h3>Раздел 3: Правила общения</h3>
+
+                            <div class="rule-item" id="rule3-1">
+                                <h4 class="rule-title">3.1 Оскорбления и конфликты</h4>
+                                <div class="rule-description">
+                                    <p>Запрещено использовать оскорбления, провокации, разводить любые конфликты, принижать с помощью матов игроков вне РП-ситуаций. Запрещены оскорбления или упоминания родственников в отрицательном контексте в RP и NonRP чатах.</p>
+                                </div>
+                                <div class="rule-punishment">
+                                    <span class="punishment-label">Наказание:</span>
+                                    <span class="punishment-text">Ban 4h | Ban 1d | Ban 1w | Perma</span>
+                                </div>
+                            </div>
+
+                            <div class="rule-item" id="rule3-2">
+                                <h4 class="rule-title">3.2 VA (Voice Abuse)</h4>
+                                <div class="rule-description">
+                                    <p>Использование микрофона в неисправном состоянии (помехи/фоновые звуки), а также воспроизведение музыки через голосовой чат.</p>
+                                    <p><em>Примеры: фоновый шум, музыка, треск, шипение.</em></p>
+                                </div>
+                                <div class="rule-punishment">
+                                    <span class="punishment-label">Наказание:</span>
+                                    <span class="punishment-text">Warn | Ban 4h | Ban 1d</span>
+                                </div>
+                            </div>
+
+                            <div class="rule-item" id="rule3-3">
+                                <h4 class="rule-title">3.3 CPO (Contrary Public Order)</h4>
+                                <div class="rule-description">
+                                    <p>Запрещено пропагандировать, распространять материал, идеи или ссылки на материалы, противоречащие общепринятым моральным принципам.</p>
+                                    <ul>
+                                        <li>Наркоманию, терроризм, экстремизм и т.д. <em>(Исключение: Алкоголь, Курение)</em></li>
+                                        <li>Материалы, относящиеся к фашизму и нацизму.</li>
+                                        <li>Любой контент, связанный с эротикой, шок-контентом, скримерами и другим подобным контентом, рассчитанным на взрослую аудиторию (18+).</li>
+                                        <li>Распространение любых символов, изображений или текста, противоречащих законам Российской Федерации или внутренним правилам сервера.</li>
+                                    </ul>
+                                    <p><em>Примеры: пропаганда насилия, экстремистские символы, запрещённые лозунги.</em></p>
+                                </div>
+                                <div class="rule-punishment">
+                                    <span class="punishment-label">Наказание:</span>
+                                    <span class="punishment-text">Ban 1w | Perma</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rules-section" id="section4">
+                        <div class="section-image">
+                            <img src="assets/section4.webp" alt="" class="section-img">
+                        </div>
+
+                        <div class="section-content">
+                            <h3>Раздел 4: Взаимодействие с администрацией</h3>
+
+                            <div class="rule-item" id="rule4-1">
+                                <h4 class="rule-title">4.1 Вмешательство в разбор жалоб</h4>
+                                <div class="rule-description">
+                                    <p>Запрещено мешать разборам жалоб либо вмешиваться в разбор жалобы без одобрения администрации или администрации выше.</p>
+                                    <p><em>Примеры: Перебивание админа, проводящего жалобу, и неадекватное поведение на жалобе. Также вмешательство в разбор чьей-то жалобы.</em></p>
+                                </div>
+                                <div class="rule-punishment">
+                                    <span class="punishment-label">Наказание:</span>
+                                    <span class="punishment-text">Kick | Ban 4h</span>
+                                </div>
+                            </div>
+
+                            <div class="rule-item" id="rule4-2">
+                                <h4 class="rule-title">4.2 Оскорбление администрации (Оск. Адм)</h4>
+                                <div class="rule-description">
+                                    <p>Запрещены угрозы/провокации/оскорбления в адрес администрации проекта вне РП-событий, либо в адрес самого проекта.</p>
+                                    <p><em>Примеры: Оскорбили сотрудника проекта во время жалобы или же в нон-РП чате.</em></p>
+                                </div>
+                                <div class="rule-punishment">
+                                    <span class="punishment-label">Наказание:</span>
+                                    <span class="punishment-text">Ban 1w | Perma</span>
+                                </div>
+                            </div>
+
+                            <div class="rule-item" id="rule4-4">
+                                <h4 class="rule-title">4.4 Обман администрации</h4>
+                                <div class="rule-description">
+                                    <p>Запрещён любой обман и ввод в заблуждение администрации.</p>
+                                    <p><em>Примеры: Вы вводите в заблуждение администрацию проекта или же обманываете её.</em></p>
+                                    <ul>
+                                        <li>Обман, касающийся демонстрации экрана с фиксацией нарушения, которая либо отсутствует, либо самого нарушения нет.</li>
+                                    </ul>
+                                </div>
+                                <div class="rule-punishment">
+                                    <span class="punishment-label">Наказание:</span>
+                                    <span class="punishment-text">Ban 4h | Ban 1d | Ban 1w | Perma</span>
+                                </div>
+                            </div>
+
+                            <div class="rule-item" id="rule4-5">
+                                <h4 class="rule-title">4.5 FA (Fake Admin)</h4>
+                                <div class="rule-description">
+                                    <p>Запрещено выдавать себя за администратора, если вы таковым не являетесь.</p>
+                                    <p><em>Примеры: Вы представляетесь администратором/ивентологом проекта, хотя вы таким не являетесь. Копирование ников администрации/ивентологии запрещено правилами 1.2, также и 4.5 (вы получите блокировку по двум этим правилам).</em></p>
+                                </div>
+                                <div class="rule-punishment">
+                                    <span class="punishment-label">Наказание:</span>
+                                    <span class="punishment-text">Warn | Ban 4h | Ban 1d</span>
+                                </div>
+                            </div>
+
+                            <div class="rule-item" id="rule4-6">
+                                <h4 class="rule-title">4.6 Ложные вызовы администрации</h4>
+                                <div class="rule-description">
+                                    <p>Запрещено делать ложные, шуточные вызовы или вызовы администрации, не относящиеся к серверу/правилам сервера/жалобе.</p>
+                                </div>
+                                <div class="rule-punishment">
+                                    <span class="punishment-label">Наказание:</span>
+                                    <span class="punishment-text">Warn | Ban 4h | Ban 1w | Perma</span>
                                 </div>
                             </div>
                         </div>
