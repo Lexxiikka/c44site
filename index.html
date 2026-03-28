@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C44 - Сайт</title>
+    <link rel="icon" href="assets/icon.webp" type="image/webp">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #0c3438;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            border-bottom: 0px solid #13484d;
+            position: relative;
+            z-index: 100;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            min-width: 250px;
+            flex-shrink: 0;
+        }
+
+        .logo {
+            height: 85px;
+            width: auto;
+            object-fit: contain;
+            border-radius: 8px;
+            border: 2px solid #fff;
+        }
+
+        .header-left h1 {
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            white-space: nowrap;
+            line-height: 1.2;
+        }
+
+        .header-center {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            padding: 0 20px;
+            min-width: 300px;
+        }
+
+        .nav-oval {
+            background-color: #800000;
+            border-radius: 50px;
+            padding: 5px 10px;
+            display: flex;
+            gap: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: none;
+            color: #ccc;
+            padding: 10px 25px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 40px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            white-space: nowrap;
+            position: relative;
+            z-index: 10;
+        }
+
+        .nav-btn:hover {
+            color: #fff;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-btn.active {
+            background-color: #fff;
+            color: #800000;
+        }
+
+        .header-right {
+            min-width: 200px;
+            text-align: right;
+            font-size: 14px;
+            opacity: 0.8;
+            z-index: 10;
+            flex-shrink: 0;
+            color: #ffffff;
+        }
+
+        .header-right p {
+            margin-bottom: 5px;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #111;
+            border: 1px solid #333;
+            border-radius: 8px;
+            min-height: 400px;
+        }
+
+        .tab-content {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.4s ease-in-out;
+        }
+
+        .tab-content.active {
+            display: block;
+            opacity: 1;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            color: #4CAF50;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: #fff;
+            margin: 20px 0 20px 0;
+            font-size: 22px;
+            border-left: 4px solid #800000;
+            padding-left: 15px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: #ddd;
+        }
+
+        .rules-wrapper {
+            display: flex;
+            gap: 30px;
+        }
+
+        .rules-sidebar {
+            width: 200px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 120px;
+            height: fit-content;
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #333;
+            align-self: flex-start;
+        }
+
+        .rules-sidebar h4 {
+            color: #4CAF50;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #333;
+        }
+
+        .rules-sidebar ul {
+            list-style: none;
+        }
+
+        .rules-sidebar li {
+            margin-bottom: 8px;
+        }
+
+        .rules-sidebar a {
+            color: #ccc;
+            text-decoration: none;
+            display: block;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .rules-sidebar a:hover {
+            background-color: #800000;
+            color: #fff;
+        }
+
+        .rules-container {
+            flex: 1;
+            width: 100%;
+        }
+
+        .rules-intro {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: #1a1a1a;
+            border-radius: 8px;
+        }
+
+        .rules-intro-img {
+            height: 200px;
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .rules-intro p {
+            font-size: 16px;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .rules-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: #1a1a1a;
+            border-radius: 8px;
+        }
+
+        .section-image {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .section-img {
+            height: 150px;
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+            border: 2px solid #333;
+        }
+
+        .section-content {
+            width: 100%;
+        }
+
+        .rule-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #222;
+            border-radius: 8px;
+            border-left: 3px solid #800000;
+        }
+
+        .rule-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .rule-title {
+            color: #ffffff;
+            font-size: 18px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .rule-description ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .rule-description li {
+            padding-left: 20px;
+            position: relative;
+            margin-bottom: 8px;
+            color: #ccc;
+        }
+
+        .rule-description li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #800000;
+        }
+
+        .rule-exceptions {
+            margin: 15px 0;
+            padding: 10px 15px;
+            background-color: rgba(76, 175, 80, 0.1);
+            border-radius: 5px;
+            border-left: 3px solid #4CAF50;
+        }
+
+        .exceptions-label {
+            color: #4CAF50;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .rule-exceptions ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .rule-exceptions li {
+            padding-left: 20px;
+            position: relative;
+            margin-bottom: 5px;
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        .rule-exceptions li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #4CAF50;
+        }
+
+        .rule-punishment {
+            margin-top: 15px;
+            padding: 10px 15px;
+            background-color: rgba(220, 53, 69, 0.1);
+            border-radius: 5px;
+            border-left: 3px solid #dc3545;
+            display: flex;
+            gap: 8px;
+            align-items: baseline;
+            flex-wrap: wrap;
+        }
+
+        .punishment-label {
+            color: #dc3545;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .punishment-text {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        @media (max-width: 900px) {
+            header {
+                flex-wrap: wrap;
+                height: auto;
+                padding: 15px 20px;
+                gap: 15px;
+            }
+
+            .header-left,
+            .header-center,
+            .header-right {
+                width: 100%;
+                text-align: center;
+                min-width: auto;
+            }
+
+            .header-right {
+                text-align: center;
+            }
+
+            .logo {
+                height: 60px;
+            }
+
+            .header-left h1 {
+                font-size: 16px;
+            }
+
+            .nav-oval {
+                justify-content: center;
+            }
+
+            .nav-btn {
+                padding: 8px 18px;
+                font-size: 14px;
+            }
+
+            .rules-wrapper {
+                flex-direction: column;
+            }
+
+            .rules-sidebar {
+                width: 100%;
+                position: static;
+                margin-bottom: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-btn {
+                padding: 8px 15px;
+                font-size: 13px;
+            }
+
+            .section-img {
+                height: 120px;
+            }
+
+            .rules-intro-img {
+                height: 150px;
+            }
+
+            .logo {
+                height: 50px;
+            }
+
+            .rule-title {
+                font-size: 16px;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-left">
+            <img src="assets/logo.webp" alt="Server Logo" class="logo">
+            <h1>Project: Suppression of Instinct</h1>
+        </div>
+        <nav class="header-center">
+            <div class="nav-oval">
+                <button class="nav-btn active" data-target="home">Главная</button>
+                <button class="nav-btn" data-target="rules">Правила</button>
+            </div>
+        </nav>
+
+        <div class="header-right">
+            <p>IP: 000.000.000.000</p>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="tab-content active">
+            <h2>Наш сервер самый крутой</h2>
+            <p>Сайт крут вообще</p>
+            <p>Заходи в наш дискорд типо да https://discord/c44</p>
+        </section>
+
+        <section id="rules" class="tab-content">
+            <h2>Правила сервера</h2>
+
+            <div class="rules-wrapper">
+                <nav class="rules-sidebar">
+                    <h4>Навигация</h4>
+                    <ul>
+                        <li><a href="#section1">Основные правила</a></li>
+                        <li><a href="#section2">Правила RP</a></li>
+                    </ul>
+                </nav>
+
+                <div class="rules-container">
+                    <div class="rules-intro">
+                        <img src="assets/rules_top.webp" alt="" class="rules-intro-img">
+                        <p>Незнание правил не освобождает от ответственности. Пожалуйста, внимательно ознакомьтесь со
+                            всеми пунктами перед началом игры.</p>
+                    </div>
+
+                    <div class="rules-section" id="section1">
+                        <div class="section-image">
+                            <img src="assets/section1.webp" alt="" class="section-img">
+                        </div>
+
+                        <div class="section-content">
+                            <h3>Раздел 1: Основные правила</h3>
+
+                            <div class="rule-item" id="rule1-1">
+                                <h4 class="rule-title">1.1. Запрещено использование читов</h4>
+                                <div class="rule-description">
+                                    <ul>
+                                        <li>Использование любого стороннего ПО, дающего преимущество</li>
+                                        <li>Wallhack, aimbot и другие модификации клиента</li>
+                                        <li>Использование багов игры в корыстных целях</li>
+                                    </ul>
+                                </div>
+                                <div class="rule-exceptions">
+                                    <span class="exceptions-label">Исключения:</span>
+                                    <ul>
+                                        <li>Разрешены клиентские моды, не влияющие на геймплей</li>
+                                        <li>HUD-модификации и изменение интерфейса</li>
+                                    </ul>
+                                </div>
+                                <div class="rule-punishment">
+                                    <span class="punishment-label">Наказание:</span>
+                                    <span class="punishment-text">Перманентный бан</span>
+                                </div>
+                            </div>
+
+                            <div class="rule-item" id="rule1-2">
+                                <h4 class="rule-title">1.2. Запрещено оскорбление игроков и администрации</h4>
+                                <div class="rule-description">
+                                    <ul>
+                                        <li>Оскорбления в чате и голосовом общении</li>
+                                        <li>Унижение достоинства других игроков</li>
+                                        <li>Провокационное поведение</li>
+                                    </ul>
+                                </div>
+                                <div class="rule-exceptions">
+                                    <span class="exceptions-label">Исключения:</span>
+                                    <ul>
+                                        <li>Конструктивная критика в адрес администрации</li>
+                                        <li>Шутки, не задевающие чувства игроков</li>
+                                    </ul>
+                                </div>
+                                <div class="rule-punishment">
+                                    <span class="punishment-label">Наказание:</span>
+                                    <span class="punishment-text">Мут от 1 часа до 3 дней</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rules-section" id="section2">
+                        <div class="section-image">
+                            <img src="assets/section2.webp" alt="" class="section-img">
+                        </div>
+
+                        <div class="section-content">
+                            <h3>Раздел 2: Правила ролевой игры (RP)</h3>
+
+                            <div class="rule-item" id="rule2-1">
+                                <h4 class="rule-title">2.1. Запрещен DeathMatch (DM)</h4>
+                                <div class="rule-description">
+                                    <ul>
+                                        <li>Убийство игроков без веской ролевой причины</li>
+                                        <li>Агрессия без предварительного отыгровывания ситуации</li>
+                                    </ul>
+                                </div>
+                                <div class="rule-exceptions">
+                                    <span class="exceptions-label">Исключения:</span>
+                                    <ul>
+                                        <li>Самооборона при нападении</li>
+                                        <li>Ситуации, предусмотренные игровыми механиками</li>
+                                    </ul>
+                                </div>
+                                <div class="rule-punishment">
+                                    <span class="punishment-label">Наказание:</span>
+                                    <span class="punishment-text">Бан от 1 до 7 дней</span>
+                                </div>
+                            </div>
+
+                            <div class="rule-item" id="rule2-2">
+                                <h4 class="rule-title">2.2. Запрещен Random DeathMatch (RDM)</h4>
+                                <div class="rule-description">
+                                    <ul>
+                                        <li>Массовое убийство игроков без причины</li>
+                                        <li>Убийства ради развлечения или фарма</li>
+                                    </ul>
+                                </div>
+                                <div class="rule-exceptions">
+                                    <span class="exceptions-label">Исключения:</span>
+                                    <ul>
+                                        <li>События, одобренные администрацией</li>
+                                    </ul>
+                                </div>
+                                <div class="rule-punishment">
+                                    <span class="punishment-label">Наказание:</span>
+                                    <span class="punishment-text">Бан от 3 до 14 дней</span>
+                                </div>
+                            </div>
+
+                            <div class="rule-item" id="rule2-3">
+                                <h4 class="rule-title">2.3. Соблюдение правила NLR</h4>
+                                <div class="rule-description">
+                                    <ul>
+                                        <li>Запрещено возвращаться на место смерти в течение 5 минут</li>
+                                        <li>Запрещено мстить убийцам сразу после возрождения</li>
+                                    </ul>
+                                </div>
+                                <div class="rule-exceptions">
+                                    <span class="exceptions-label">Исключения:</span>
+                                    <ul>
+                                        <li>Если рейд продолжается и вы были его частью</li>
+                                    </ul>
+                                </div>
+                                <div class="rule-punishment">
+                                    <span class="punishment-label">Наказание:</span>
+                                    <span class="punishment-text">Предупреждение или бан до 3 дней</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script defer>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navButtons = document.querySelectorAll('.nav-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            navButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    navButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+
+                    tabContents.forEach(content => content.classList.remove('active'));
+
+                    const targetId = button.getAttribute('data-target');
+                    const targetContent = document.getElementById(targetId);
+
+                    if (targetContent) {
+                        targetContent.classList.add('active');
+                    }
+                });
+            });
+
+            const images = document.querySelectorAll('img');
+
+            images.forEach(img => {
+                img.addEventListener('error', function () {
+                    this.style.display = 'none';
+                    const parent = this.parentElement;
+                    if (parent && parent.classList.contains('section-image')) {
+                        parent.style.display = 'none';
+                    }
+                    if (parent && parent.classList.contains('rules-intro')) {
+                        const introText = parent.querySelector('p');
+                        if (introText) {
+                            introText.style.marginTop = '0';
+                        }
+                    }
+                });
+
+                if (img.complete && img.naturalHeight === 0) {
+                    img.style.display = 'none';
+                    const parent = img.parentElement;
+                    if (parent && parent.classList.contains('section-image')) {
+                        parent.style.display = 'none';
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
