@@ -520,6 +520,111 @@
             font-weight: 600;
         }
 
+        .terms-accordion {
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            border: 1px solid #333;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .terms-accordion-header {
+            background: linear-gradient(to right, #800000, #1a1a1a);
+            color: #fff;
+            padding: 15px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+            user-select: none;
+        }
+
+        .terms-accordion-header:hover {
+            background: linear-gradient(to right, #990000, #222);
+        }
+
+        .terms-accordion-header .toggle-icon {
+            font-size: 20px;
+            transition: transform 0.3s ease;
+            color: #4CAF50;
+        }
+
+        .terms-accordion-header.active .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .terms-accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+            background-color: #111;
+        }
+
+        .terms-accordion-content.show {
+            max-height: 2000px;
+            transition: max-height 0.6s ease-in;
+        }
+
+        .terms-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .terms-list li {
+            padding: 12px 20px;
+            border-bottom: 1px solid #2a2a2a;
+            transition: background 0.2s ease;
+        }
+
+        .terms-list li:last-child {
+            border-bottom: none;
+        }
+
+        .terms-list li:hover {
+            background-color: #1e1e1e;
+        }
+
+        .term-title {
+            color: #87ece6;
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .term-title::before {
+            content: "▸";
+            color: #800000;
+            font-weight: bold;
+        }
+
+        .term-desc {
+            color: #ccc;
+            font-size: 14px;
+            line-height: 1.5;
+            padding-left: 20px;
+        }
+
+        .term-example {
+            margin-top: 8px;
+            padding-left: 20px;
+            font-size: 13px;
+            color: #aaa;
+            font-style: italic;
+        }
+
+        .term-example::before {
+            content: "💡 Пример: ";
+            color: #4CAF50;
+            font-style: normal;
+        }
+
         @media (max-width: 900px) {
             header {
                 flex-wrap: wrap;
@@ -665,6 +770,7 @@
                 <nav class="rules-sidebar">
                     <h4>Навигация</h4>
                     <ul>
+                        <li><a href="#terms">📚 Список терминов</a></li>
                         <li><a href="#section1">ну я хз раздел 1</a></li>
                         <li><a href="#section2">Два раздел</a></li>
                     </ul>
@@ -673,7 +779,67 @@
                 <div class="rules-container">
                     <div class="rules-intro">
                         <img src="assets/rules_top.webp" alt="" class="rules-intro-img">
-                        <p>Незнание правил не освобождает от ответственности.</p>
+                        <p style="color: red;">Каждый администратор, имеет право выбирать тип и срок наказания по своему усмотрению.</p>
+                    </div>
+
+                    <div class="terms-accordion" id="terms">
+                        <div class="terms-accordion-header" id="termsHeader">
+                            📚 Список терминов
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="terms-accordion-content" id="termsContent">
+                            <ul class="terms-list">
+                                <li>
+                                    <div class="term-title">RP - Role Play</div>
+                                    <div class="term-desc">
+                                        Это принятие всех обязанностей и личностных качеств своего персонажа на себя для создания атмосферы, соответствующей вселенной и лору проекта.
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="term-title">OOC - Out Of Character</div>
+                                    <div class="term-desc">
+                                        Отдельный способ коммуникации, используемый исключительно для общения игроков друг с другом, не затрагивая непосредственно само ролевое взаимодействие. Позволяет игрокам различных фракций общаться между собой вне RP рамок.
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="term-title">LOOC - Local Out Of Character</div>
+                                    <div class="term-desc">
+                                        Тоже самое, что и ООС, но в ограниченом радиусе: сообщения LOOC видны только тем, кто находится поблизости, позволяя обмениваться неигровой информацией не засоряя глобальный ООС.
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="term-title">Me</div>
+                                    <div class="term-desc">
+                                        Отыгровка действий персонажа от первого лица. Пишется с маленькой буквы в начале предложения. Можно совмещать несколько действий в одну отыгровку.
+                                    </div>
+                                    <div class="term-example">/me достаёт пистолет и направляет его на гражданина впереди.</div>
+                                </li>
+                                <li>
+                                    <div class="term-title">it</div>
+                                    <div class="term-desc">
+                                        Отыгровка окружения или действий персонажа от третьего лица. Пишется с заглавной буквы в начале предложения. Разрешается совмещать несколько описаний в одну отыгровку.
+                                    </div>
+                                    <div class="term-example">/it В воздухе повисло неловкое молчание...</div>
+                                    <div class="term-example">/it Командующий явно был недоволен действиями своего подчиненного.</div>
+                                </li>
+                                <li>
+                                    <div class="term-title">Try</div>
+                                    <div class="term-desc">
+                                        Команда, нацеленная на демонстрацию удачи или неудачи конкретного действия персонажа в зависимости от удачи или других обстоятельств.
+                                    </div>
+                                    <div class="term-example">/try открыть замок отмычкой</div>
+                                </li>
+                                <li>
+                                    <div class="term-title">Roll</div>
+                                    <div class="term-desc">
+                                        Система взаимодействия между персонажами, основанная на случайных событиях, требующая реакции других участников. Часто применяется в ситуациях, где исход зависит от удачи или определённых условий. Roll помогает создавать динамичные игровые моменты и поддерживает интерес игроков.
+                                    </div>
+                                    <div class="term-example">
+                                        /roll 6 для броска кубика.
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
 
                     <div class="rules-section" id="section1">
@@ -849,6 +1015,44 @@
                 setTimeout(() => {
                     switchIPElements(false);
                 }, 1300);
+            });
+
+            const termsHeader = document.getElementById('termsHeader');
+            const termsContent = document.getElementById('termsContent');
+
+            if (termsHeader && termsContent) {
+                termsHeader.addEventListener('click', () => {
+                    termsHeader.classList.toggle('active');
+                    termsContent.classList.toggle('show');
+                });
+                
+                document.addEventListener('click', (e) => {
+                    if (!termsHeader.contains(e.target) && !termsContent.contains(e.target)) {
+                        termsHeader.classList.remove('active');
+                        termsContent.classList.remove('show');
+                    }
+                });
+            }
+
+            const sidebarLinks = document.querySelectorAll('.rules-sidebar a');
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement && targetElement.classList.contains('terms-accordion')) {
+                        e.preventDefault();
+                        const termsHeader = document.getElementById('termsHeader');
+                        const termsContent = document.getElementById('termsContent');
+                        
+                        if (termsHeader && termsContent) {
+                            termsHeader.classList.add('active');
+                            termsContent.classList.add('show');
+                            
+                            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                    }
+                });
             });
         });
     </script>
