@@ -115,10 +115,13 @@
             opacity: 0.8;
             z-index: 10;
             flex-shrink: 0;
-            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: flex-end;
         }
 
-        .header-right p {
+        .header-right {
             margin-bottom: 5px;
             font-weight: bold;
         }
@@ -230,6 +233,30 @@
             opacity: 0;
             pointer-events: none;
             z-index: -1;
+        }
+
+        .discord-btn {
+            display: inline-block;
+            padding: 6px 14px;
+            background: #5865f2;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            border-radius: 6px;
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.25s ease;
+            text-align: center;
+            margin: 0;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: normal;
+            white-space: nowrap;
+        }
+
+        .discord-btn:hover {
+            background: rgba(88, 101, 242, 0.5);
+            border-color: rgba(88, 101, 242, 1);
+            box-shadow: 0 0 12px rgba(88, 101, 242, 0.3);
+            transform: translateY(-1px) scale(1.04);
         }
 
         main {
@@ -596,6 +623,8 @@
                     ✓ Скопировано!
                 </p>
             </div>
+            <a href="https://discord.gg/qcg5ZBS38J" target="_blank" class="discord-btn"
+                style="font-weight: bold;">Discord</a>
         </div>
     </header>
 
