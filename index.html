@@ -56,7 +56,6 @@
 
         .header-left h1 {
             font-size: 18px;
-            text-transform: uppercase;
             letter-spacing: 1px;
             white-space: nowrap;
             line-height: 1.2;
@@ -124,16 +123,113 @@
             font-weight: bold;
         }
 
+        .ip-container {
+            position: relative;
+            display: inline-block;
+            min-height: 40px;
+            min-width: 165px;
+        }
+
+        #ip-address,
+        #ip-copied {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 6px 14px;
+            background: rgba(135, 236, 230, 0.3);
+            border: 2px solid rgba(135, 236, 230, 0.6);
+            border-radius: 6px;
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.25s ease;
+            text-align: center;
+            margin: 0;
+        }
+
+        #ip-address:not(.hidden):hover {
+            background: rgba(135, 236, 230, 0.5);
+            border-color: rgba(135, 236, 230, 1);
+            box-shadow: 0 0 12px rgba(135, 236, 230, 0.3);
+            transform: translateY(-1px) scale(1.04);
+        }
+
+        #ip-address.hidden,
+        #ip-copied.hidden {
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(0.95);
+            z-index: 1;
+        }
+
+        #ip-address:not(.hidden),
+        #ip-copied:not(.hidden) {
+            opacity: 1;
+            z-index: 2;
+        }
+
         #ip-address {
             color: #87ece6;
         }
 
-        #ip-address:hover {
-            color: #3e8baf;
-        }
-
         #ip-copied {
             color: #00ff2a;
+            background: rgba(0, 255, 42, 0.12);
+            border-color: rgba(0, 255, 42, 0.5);
+            pointer-events: none;
+        }
+
+        .ip-fade-out {
+            animation: ipFadeOut 0.2s ease forwards;
+        }
+
+        .ip-fade-in {
+            animation: ipFadeIn 0.25s ease forwards;
+        }
+
+        .ip-pop {
+            animation: ipPop 0.3s ease;
+        }
+
+        @keyframes ipFadeOut {
+            to {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+        }
+
+        @keyframes ipFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes ipPop {
+            50% {
+                transform: scale(1.08);
+            }
+        }
+
+        #ip-address::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(135, 236, 230, 0.4);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.4s ease, height 0.4s ease, opacity 0.4s ease;
+            opacity: 0;
+            pointer-events: none;
+            z-index: -1;
         }
 
         main {
@@ -492,12 +588,14 @@
         </nav>
 
         <div class="header-right">
-            <p id="ip-address" style="cursor: pointer; user-select: none;" class="" title="Нажми, чтобы скопировать">
-                IP: loading...
-            </p>
-            <p id="ip-copied" class="hidden">
-                IP скопирован!
-            </p>
+            <div class="ip-container">
+                <p id="ip-address" title="Нажми, чтобы скопировать">
+                    IP: loading...
+                </p>
+                <p id="ip-copied" class="hidden">
+                    ✓ Скопировано!
+                </p>
+            </div>
         </div>
     </header>
 
@@ -686,24 +784,43 @@
                     }
                 }
             });
-        });
-        
-        serverIp = "123.245.167.189"
-        
-        const ipEl = document.getElementById('ip-address');
-        const ipCp = document.getElementById('ip-copied');
-        
-        ipEl.innerText = `IP: ${serverIp}`
 
-        ipEl.addEventListener('click', () => {
-            navigator.clipboard.writeText(serverIp);
-            
-            ipEl.classList.add('hidden')
-            ipCp.classList.remove('hidden')
-            setTimeout(() => {
-                ipCp.classList.add('hidden')
-                ipEl.classList.remove('hidden')
-            }, 1500);
+            const serverIp = "123.245.167.189";
+            const ipEl = document.getElementById('ip-address');
+            const ipCp = document.getElementById('ip-copied');
+
+            ipEl.innerText = `IP: ${serverIp}`;
+
+            function switchIPElements(showCopied) {
+                if (showCopied) {
+                    ipEl.classList.add('ip-fade-out');
+                    setTimeout(() => {
+                        ipEl.classList.add('hidden');
+                        ipEl.classList.remove('ip-fade-out');
+
+                        ipCp.classList.remove('hidden');
+                        ipCp.classList.add('ip-fade-in', 'ip-pop');
+                    }, 200);
+                } else {
+                    ipCp.classList.remove('ip-fade-in', 'ip-pop');
+                    ipCp.classList.add('hidden');
+
+                    ipEl.classList.remove('hidden');
+                    ipEl.classList.add('ip-fade-in');
+                    setTimeout(() => {
+                        ipEl.classList.remove('ip-fade-in');
+                    }, 250);
+                }
+            }
+            ipEl.addEventListener('click', async () => {
+                ipEl.classList.add('clicked');
+                setTimeout(() => ipEl.classList.remove('clicked'), 400);
+                navigator.clipboard.writeText(serverIp);
+                switchIPElements(true);
+                setTimeout(() => {
+                    switchIPElements(false);
+                }, 1300);
+            });
         });
     </script>
 </body>
